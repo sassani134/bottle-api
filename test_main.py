@@ -39,9 +39,23 @@ def test_read_player():
     assert response.json() == {"id": 1, "name": "player"}
 
 
+def test_read_player_with_name():
+    client = TestClient(app)
+    response = client.get("/player/player")
+    assert response.status_code == 200
+    assert response.json() == {"id": 1, "name": "player"}
+
+
 def test_update_player():
     client = TestClient(app)
     response = client.put("/player/1", json={"name": "player"})
+    assert response.status_code == 200
+    assert response.json() == {"id": 1, "name": "player"}
+
+
+def test_update_player_with_name():
+    client = TestClient(app)
+    response = client.put("/player/player", json={"name": "player"})
     assert response.status_code == 200
     assert response.json() == {"id": 1, "name": "player"}
 
@@ -51,3 +65,52 @@ def delete_player():
     response = client.delete("/player/1")
     assert response.status_code == 200
     assert response.json() == {"id": 1, "name": "player"}
+
+
+def delete_player_with_name():
+    client = TestClient(app)
+    response = client.delete("/player/player")
+    assert response.status_code == 200
+    assert response.json() == {"id": 1, "name": "player"}
+
+
+def test_read_player_not_found():
+    client = TestClient(app)
+    response = client.get("/player/4")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "player  with id 4 not found"}
+
+
+def test_read_player_with_name_not_found():
+    client = TestClient(app)
+    response = client.get("/player/player4")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "player  with name player4 not found"}
+
+
+def test_update_player_not_found():
+    client = TestClient(app)
+    response = client.put("/player/4", json={"name": "player4"})
+    assert response.status_code == 404
+    assert response.json() == {"detail": "player  with id 4 not found"}
+
+
+def test_update_player_with_name_not_found():
+    client = TestClient(app)
+    response = client.put("/player/player4", json={"name": "player4"})
+    assert response.status_code == 404
+    assert response.json() == {"detail": "player  with name player4 not found"}
+
+
+def test_delete_player_not_found():
+    client = TestClient(app)
+    response = client.delete("/player/4")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "player  with id 4 not found"}
+
+
+def test_delete_player_with_name_not_found():
+    client = TestClient(app)
+    response = client.delete("/player/player4")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "player  with name player4 not found"}
