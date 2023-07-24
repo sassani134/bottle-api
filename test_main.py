@@ -3,9 +3,9 @@ from main import app
 
 
 fake_player_db = {
-    1: { "id": 1, "name": "player", "lvl": 1, "expMax": 100, "expCurr": 0, "hp": 10, "mp": 10, "atk": 1, "defn": 1, "spd": 10},
-    2: { "id": 2, "name": "player2", "lvl": 10, "expMax": 10000, "expCurr": 300, "hp": 100, "mp": 50, "atk": 3, "defn": 2, "spd": 50},
-    3: { "id": 3, "name": "player3", "lvl": 1, "expMax": 100, "expCurr": 0, "hp": 10, "mp": 10, "atk": 1, "defn": 1, "spd": 10},
+    1: {"id": 1, "name": "player", "lvl": 1, "expMax": 100, "expCurr": 0, "hp": 10, "mp": 10, "atk": 1, "defn": 1, "spd": 10},
+    2: {"id": 2, "name": "player2", "lvl": 10, "expMax": 10000, "expCurr": 300, "hp": 100, "mp": 50, "atk": 3, "defn": 2, "spd": 50},
+    3: {"id": 3, "name": "player3", "lvl": 1, "expMax": 100, "expCurr": 0, "hp": 10, "mp": 10, "atk": 1, "defn": 1, "spd": 10},
 }
 
 
